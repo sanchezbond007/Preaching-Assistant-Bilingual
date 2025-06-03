@@ -22,3 +22,4 @@
 [INFO   ] GL: NPOT texture support is available
 [WARNING] Base: Unknown <android> provider
 [INFO   ] Base: Start application main loop
+[INFO   ] Base: Leaving application in progress...
