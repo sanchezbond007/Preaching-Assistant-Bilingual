@@ -262,4 +262,6 @@ class PantallaAvisoLegal(Screen):
     
     def actualizar_textos(self):
         self.clear_widgets()
-        self.crear_interfaz()
+        self.crear_interfaz()# Actualizado Mon Jun  2 22:58:27 EDT 2025
+# Actualizado Mon Jun  2 22:59:06 EDT 2025
+# Actualizado Mon Jun  2 23:00:15 EDT 2025

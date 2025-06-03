@@ -259,4 +259,5 @@ class PantallaMenu(Screen):
             self.volver_callback()
         else:
             if self.manager and self.manager.has_screen('login'):
-                self.manager.current = 'login'
+                self.manager.current = 'login'# Actualizado Mon Jun  2 22:59:23 EDT 2025
+# Actualizado Mon Jun  2 23:00:39 EDT 2025
