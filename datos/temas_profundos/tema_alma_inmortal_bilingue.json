@@ -3,141 +3,27 @@
     "es": "¿Es el alma inmortal según la Biblia?",
     "en": "Is the Soul Immortal According to the Bible?"
   },
-  "argumentos": {
-    "argumentos_biblicos": [
-      {
-        "titulo": {
-          "es": "El alma no es inmortal",
-          "en": "The Soul Is Not Immortal"
-        },
-        "cita": "Mateo 10:28",
-        "texto": {
-          "es": "Teman a aquel que puede destruir tanto el alma como el cuerpo en la Gehena.",
-          "en": "Fear the one who can destroy both soul and body in Gehenna."
-        }
-      },
-      {
-        "titulo": {
-          "es": "El alma representa a la persona entera",
-          "en": "The Soul Represents the Whole Person"
-        },
-        "cita": "Hechos 3:23",
-        "texto": {
-          "es": "Toda alma que no escuche a ese profeta será eliminada.",
-          "en": "Every soul that does not listen to that prophet will be destroyed."
-        }
-      }
-    ],
-    "argumentos_logicos": [
-      {
-        "titulo": {
-          "es": "Si el alma fuera inmortal, no necesitaríamos la resurrección",
-          "en": "If the Soul Were Immortal, Resurrection Would Be Unnecessary"
-        },
-        "explicacion": {
-          "es": "La esperanza cristiana se basa en que Dios levantará a los muertos. Si el alma no muriera, la resurrección sería innecesaria.",
-          "en": "Christian hope is based on God resurrecting the dead. If the soul did not die, resurrection would be unnecessary."
-        }
-      },
-      {
-        "titulo": {
-          "es": "La doctrina del alma inmortal contradice el sacrificio de Jesús",
-          "en": "The Immortal Soul Doctrine Contradicts Jesus’ Sacrifice"
-        },
-        "explicacion": {
-          "es": "Jesús murió para redimir a los humanos de la muerte, no para liberar un alma inmortal. Su sacrificio pagó el precio del pecado: la muerte.",
-          "en": "Jesus died to redeem humans from death, not to free an immortal soul. His sacrifice paid the price for sin—death."
-        }
-      }
-    ],
-    "argumentos_historicos": [
-      {
-        "titulo": {
-          "es": "La creencia en el alma inmortal proviene de la filosofía griega",
-          "en": "Belief in the Immortal Soul Comes from Greek Philosophy"
-        },
-        "descripcion": {
-          "es": "Platón enseñó que el alma es inmortal, y esa idea fue adoptada por religiones después del siglo II. No se originó en las Escrituras.",
-          "en": "Plato taught that the soul is immortal, and this idea was adopted by religions after the second century. It did not originate in the Scriptures."
-        }
-      },
-      {
-        "titulo": {
-          "es": "Los judíos del Antiguo Testamento no creían en un alma inmortal",
-          "en": "Old Testament Jews Did Not Believe in an Immortal Soul"
-        },
-        "descripcion": {
-          "es": "Los fieles de la antigüedad creían en una resurrección futura, no en una vida consciente después de la muerte.",
-          "en": "Ancient faithful ones believed in a future resurrection, not a conscious life after death."
-        }
-      }
-    ],
-    "fuentes_recomendadas": [
-      "https://www.jw.org/es/biblioteca/revistas/g201411/alma-es-inmortal/",
-      "https://wol.jw.org/es/wol/d/r4/lp-s/1101989274",
-      "https://www.jw.org/es/biblioteca/libros/Enseña/que-es-el-alma/"
-    ]
-  },
-  "conclusion": {
-    "es": "La enseñanza bíblica muestra que el alma no es inmortal. El alma es la persona completa, que muere al morir el cuerpo. La verdadera esperanza para los muertos es la resurrección que Dios promete mediante Jesús.",
-    "en": "The Bible shows that the soul is not immortal. The soul is the whole person, who dies when the body dies. The true hope for the dead is the resurrection that God promises through Jesus."
-  },
   "contenido": {
-    "es": "La mayoría de las religiones enseñan que el alma es inmortal y que sigue viviendo después de la muerte. Sin embargo, la Biblia enseña lo contrario: que el alma puede morir y que el ser humano no tiene una parte separada que continúe consciente después de la muerte.",
-    "en": "Most religions teach that the soul is immortal and continues living after death. However, the Bible teaches the opposite: the soul can die, and humans do not have a separate part that remains conscious after death."
+    "es": "La mayoría de las religiones enseñan que el alma es inmortal y que sigue viva después de la muerte. Sin embargo, la Biblia enseña que el alma no es una entidad separada ni inmortal. De hecho, el alma puede morir, y representa a la persona entera, no una parte etérea que sobrevive al cuerpo.\n\n🔹 El alma puede morir\n> “Teman a aquel que puede destruir tanto el alma como el cuerpo en la Gehena.” — Mateo 10:28\n> “El alma que peque, esa morirá.” — Ezequiel 18:4\nLa Biblia deja claro que el alma no es indestructible. Dios puede destruir tanto el cuerpo como el alma.\n\n🔹 El alma es la persona completa\n> “Toda alma que no escuche a ese profeta será eliminada.” — Hechos 3:23\n> “El hombre vino a ser un alma viviente.” — Génesis 2:7\nEl alma no es algo que el ser humano tenga, sino lo que el ser humano es.\n\n🔹 Los muertos no están conscientes\n> “Los vivos saben que morirán, pero los muertos no saben nada.” — Eclesiastés 9:5\n> “Ese día perecen sus pensamientos.” — Salmo 146:4\nLa Biblia enseña que los muertos están en un estado de inconsciencia total.\n\n🔹 Esperanza bíblica: la resurrección\nSi el alma fuera inmortal, la resurrección no sería necesaria. Pero la Biblia promete una resurrección futura como esperanza para los muertos (Juan 5:28-29).\n\n🔹 Doctrinas falsas introducidas después\nLa creencia en el alma inmortal proviene de la filosofía griega, especialmente de Platón, y fue adoptada por religiones después del siglo II. Los judíos del Antiguo Testamento no compartían esta creencia; ellos esperaban una resurrección.\n\n✅ Conclusión\nLa enseñanza bíblica muestra que el alma no es inmortal. El alma muere con el cuerpo. La esperanza verdadera para los muertos es la resurrección prometida por Dios mediante Jesucristo.",
+    
+    "en": "Most religions teach that the soul is immortal and continues to live after death. However, the Bible teaches otherwise: the soul is not a separate, immortal entity. In fact, the soul can die, and it represents the whole person—not something that survives the body.\n\n🔹 The soul can die\n> “Fear the one who can destroy both soul and body in Gehenna.” — Matthew 10:28\n> “The soul who sins is the one who will die.” — Ezekiel 18:4\nThe Bible clearly states that the soul is not indestructible.\n\n🔹 The soul is the whole person\n> “Every soul that does not listen to that prophet will be destroyed.” — Acts 3:23\n> “The man became a living soul.” — Genesis 2:7\nThe soul is not something humans have—it’s what they are.\n\n🔹 The dead are unconscious\n> “The living know they will die, but the dead know nothing at all.” — Ecclesiastes 9:5\n> “That very day his thoughts perish.” — Psalm 146:4\nScripture shows that the dead are not alive or conscious in another realm.\n\n🔹 Biblical hope: the resurrection\nIf the soul were immortal, there would be no need for resurrection. But the Bible promises a future resurrection as the true hope for the dead (John 5:28-29).\n\n🔹 False doctrines introduced later\nBelief in the immortal soul originated in Greek philosophy—especially from Plato—and was later adopted by religion after the second century. Ancient Jews did not hold this belief; they expected a resurrection.\n\n✅ Conclusion\nThe Bible teaches that the soul is not immortal. The soul dies with the body. The real hope for the dead is the resurrection promised by God through Jesus Christ."
   },
-  "secciones": [
-    {
-      "subtitulo": {
-        "es": "La Biblia enseña que el alma puede morir",
-        "en": "The Bible Teaches That the Soul Can Die"
-      },
-      "parrafos": [
-        {
-          "es": "Si el alma fuera inmortal, no podría morir. Este versículo muestra claramente que el alma no es una entidad eterna e indestructible.",
-          "en": "If the soul were immortal, it could not die. This verse clearly shows the soul is not an eternal and indestructible entity."
-        },
-        {
-          "es": "Ezequiel 18:4: El alma que peque, esa morirá.",
-          "en": "Ezekiel 18:4: The soul who sins is the one who will die."
-        }
-      ]
-    },
-    {
-      "subtitulo": {
-        "es": "El alma se refiere a la persona completa, no a una parte separada",
-        "en": "The Soul Refers to the Whole Person, Not a Separate Part"
-      },
-      "parrafos": [
-        {
-          "es": "Adán no recibió un alma; él 'vino a ser' un alma. En la Biblia, el alma es el ser viviente completo, no algo que vive separadamente dentro del cuerpo.",
-          "en": "Adam did not receive a soul; he 'became' a soul. In the Bible, the soul is the complete living being, not something that lives separately inside the body."
-        },
-        {
-          "es": "Génesis 2:7: El hombre vino a ser un alma viviente.",
-          "en": "Genesis 2:7: The man became a living soul."
-        }
-      ]
-    },
-    {
-      "subtitulo": {
-        "es": "Los muertos están inconscientes, no conscientes en otra dimensión",
-        "en": "The Dead Are Unconscious, Not Conscious in Another Dimension"
-      },
-      "parrafos": [
-        {
-          "es": "Estas escrituras muestran que los muertos no continúan viviendo en otra parte. No piensan, no sienten, y no recuerdan nada.",
-          "en": "These scriptures show that the dead do not continue living elsewhere. They do not think, feel, or remember anything."
-        },
-        {
-          "es": "Eclesiastés 9:5: Los vivos saben que morirán, pero los muertos no saben nada.",
-          "en": "Ecclesiastes 9:5: The living know they will die, but the dead know nothing at all."
-        },
-        {
-          "es": "Salmo 146:4: Ese día perecen sus pensamientos.",
-          "en": "Psalm 146:4: That very day his thoughts perish."
-        }
-      ]
-    }
-  ]
+  "versiculos": [
+    "Mateo 10:28",
+    "Ezequiel 18:4",
+    "Hechos 3:23",
+    "Génesis 2:7",
+    "Eclesiastés 9:5",
+    "Salmo 146:4",
+    "Juan 5:28-29"
+  ],
+  "enlaces": [
+    "https://www.jw.org/es/biblioteca/revistas/g201411/alma-es-inmortal/",
+    "https://wol.jw.org/es/wol/d/r4/lp-s/1101989274",
+    "https://www.jw.org/es/biblioteca/libros/Enseña/que-es-el-alma/"
+  ],
+  "copyright": {
+    "es": "© 2025 Watch Tower Bible and Tract Society of Pennsylvania. Usado con fines educativos sin ánimo de lucro.",
+    "en": "© 2025 Watch Tower Bible and Tract Society of Pennsylvania. Used for educational, non-commercial purposes."
+  }
 }

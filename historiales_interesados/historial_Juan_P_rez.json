@@ -1,0 +1,17 @@
+{
+  "nombre": "Juan Pérez",
+  "email": "juan@example.com",
+  "telefono": "555123456",
+  "fecha_creacion": "2025-06-04 19:45:01",
+  "fecha_ultima_actualizacion": "2025-06-04 19:45:01",
+  "total_temas_vistos": 1,
+  "temas_vistos": [
+    {
+      "tema": "¿Qué es la fe verdadera?",
+      "categoria": "sugerencias",
+      "fecha": "2025-06-04",
+      "hora": "19:45:01",
+      "tiempo_dedicado_minutos": 10
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "titulo": {
+    "es": "¿Quién es Jesucristo?",
+    "en": "Who is Jesus Christ?"
+  },
+  "contenido": {
+    "es": "Jesucristo es el Hijo de Dios, el Mesías prometido, y el primero de toda la creación.",
+    "en": "Jesus Christ is the Son of God, the promised Messiah, and the first of all creation."
+  },
+  "respuesta": {
+    "es": "",
+    "en": ""
+  },
+  "cita": "",
+  "link": "",
+  "argumentos": {
+    "argumentos_biblicos": [],
+    "argumentos_logicos": [],
+    "argumentos_historicos": [],
+    "fuentes_recomendadas": []
+  },
+  "secciones": [],
+  "versiculos": [
+    "Juan 3:16"
+  ],
+  "enlaces": [
+    "https://www.jw.org/es/biblioteca/libros/buena-noticia-quien-es-jesus/"
+  ],
+  "conclusion": {
+    "es": "",
+    "en": ""
+  },
+  "copyright": {
+    "es": "© 2025 Watch Tower Bible and Tract Society of Pennsylvania. Usado con fines educativos sin ánimo de lucro.",
+    "en": "© 2025 Watch Tower Bible and Tract Society of Pennsylvania. Used for educational, non-commercial purposes."
+  }
+}

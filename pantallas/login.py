@@ -1,3 +1,7 @@
+# ==========================================
+# PARTE 1: IMPORTACIONES Y CONFIGURACIÓN (CORREGIDA)
+# ==========================================
+
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
@@ -9,7 +13,7 @@ from kivy.uix.popup import Popup
 from kivy.metrics import dp
 from kivy.graphics import Color, RoundedRectangle
 from kivy.clock import Clock
-from utils.traducciones import obtener_texto
+# ELIMINADA: from utils.traducciones import obtener_texto
 import json
 import os
 import threading
@@ -22,6 +26,10 @@ try:
 except ImportError:
     UPDATES_AVAILABLE = False
     print("⚠️ requests o packaging no disponibles - función de actualizaciones limitada")
+
+# ==========================================
+# PARTE 2: INICIALIZACIÓN DE LA CLASE
+# ==========================================
 
 class PantallaLogin(Screen):
     def __init__(self, **kwargs):
@@ -59,6 +67,7 @@ class PantallaLogin(Screen):
         self.checkbox_recordar = None
         self.btn_espanol = None
         self.btn_ingles = None
+        self.btn_toggle_password = None  # NUEVO: Botón para mostrar/ocultar contraseña
         
         # Inicializar base de datos y credenciales
         self.crear_db_usuarios_si_no_existe()
@@ -66,45 +75,52 @@ class PantallaLogin(Screen):
         
         # Crear interfaz
         self.crear_interfaz()
-    
+
+# ==========================================
+# PARTE 3: GESTIÓN DE BASE DE DATOS (MEJORADA)
+# ==========================================
+
     def crear_db_usuarios_si_no_existe(self):
         """Crea la base de datos de usuarios si no existe"""
         try:
-            if not os.path.exists(self.usuarios_db):
-                print(f"📁 Creando nueva base de datos: {self.usuarios_db}")
-                usuarios_default = {
-                    'sanchezbond007': {
-                        'contrasena': 'password123',
-                        'nombre': 'James',
-                        'apellido': 'Bond',
-                        'email': 'bond@secret.com'
-                    },
-                    'admin': {
-                        'contrasena': 'admin',
-                        'nombre': 'Administrador',
-                        'apellido': 'Sistema',
-                        'email': 'admin@system.com'
-                    }
+            # Siempre recrear si hay problemas
+            print(f"📁 Creando/recreando base de datos: {self.usuarios_db}")
+            usuarios_default = {
+                "sanchezbond007": {
+                    "contrasena": "password123",
+                    "nombre": "James",
+                    "apellido": "Bond",
+                    "email": "bond@secret.com"
+                },
+                "admin": {
+                    "contrasena": "admin",
+                    "nombre": "Administrador",
+                    "apellido": "Sistema",
+                    "email": "admin@system.com"
                 }
+            }
+            
+            # Asegurar que el directorio existe
+            directorio = os.path.dirname(self.usuarios_db) if os.path.dirname(self.usuarios_db) else '.'
+            if not os.path.exists(directorio):
+                os.makedirs(directorio)
+            
+            # Escribir archivo con formato correcto
+            with open(self.usuarios_db, 'w', encoding='utf-8') as archivo:
+                json.dump(usuarios_default, archivo, ensure_ascii=False, indent=4)
+            
+            print("✅ Base de datos de usuarios creada/recreada exitosamente:")
+            print("   - Usuario: sanchezbond007 | Contraseña: password123")
+            print("   - Usuario: admin | Contraseña: admin")
+            
+            # Verificar que se creó correctamente
+            with open(self.usuarios_db, 'r', encoding='utf-8') as archivo:
+                verificacion = json.load(archivo)
+                print(f"✅ Verificación: {len(verificacion)} usuarios creados")
                 
-                with open(self.usuarios_db, 'w', encoding='utf-8') as archivo:
-                    json.dump(usuarios_default, archivo, ensure_ascii=False, indent=2)
-                
-                print("✅ Base de datos de usuarios creada con usuarios de prueba:")
-                print("   - Usuario: sanchezbond007 | Contraseña: password123")
-                print("   - Usuario: admin | Contraseña: admin")
-            else:
-                print(f"✅ Base de datos existente encontrada: {self.usuarios_db}")
-                # Verificar contenido de la base de datos existente
-                try:
-                    with open(self.usuarios_db, 'r', encoding='utf-8') as archivo:
-                        usuarios = json.load(archivo)
-                    print(f"👥 Usuarios en base de datos: {list(usuarios.keys())}")
-                except Exception as e:
-                    print(f"⚠️ Error al leer base de datos existente: {e}")
-                    
         except Exception as e:
-            print(f"❌ Error al crear/verificar DB de usuarios: {e}")
+            print(f"❌ Error al crear base de datos: {e}")
+            print(f"❌ Tipo de error: {type(e)}")
     
     def agregar_usuario_a_db(self, datos_usuario):
         """Agrega un nuevo usuario a la base de datos"""
@@ -112,22 +128,32 @@ class PantallaLogin(Screen):
             # Cargar usuarios existentes
             usuarios = {}
             if os.path.exists(self.usuarios_db):
-                with open(self.usuarios_db, 'r', encoding='utf-8') as archivo:
-                    usuarios = json.load(archivo)
+                try:
+                    with open(self.usuarios_db, 'r', encoding='utf-8') as archivo:
+                        usuarios = json.load(archivo)
+                    
+                    # Verificar formato
+                    if not isinstance(usuarios, dict):
+                        print("❌ Formato incorrecto en DB, recreando...")
+                        usuarios = {}
+                        
+                except (json.JSONDecodeError, Exception) as e:
+                    print(f"❌ Error al leer DB existente: {e}")
+                    usuarios = {}
             
             # Agregar nuevo usuario
             usuario_nuevo = {
-                'contrasena': datos_usuario['contrasena'],
-                'nombre': datos_usuario.get('nombre', ''),
-                'apellido': datos_usuario.get('apellido', ''),
-                'email': datos_usuario.get('correo', '')
+                "contrasena": datos_usuario.get('contrasena', ''),
+                "nombre": datos_usuario.get('nombre', ''),
+                "apellido": datos_usuario.get('apellido', ''),
+                "email": datos_usuario.get('correo', '')
             }
             
             usuarios[datos_usuario['usuario']] = usuario_nuevo
             
             # Guardar base de datos actualizada
             with open(self.usuarios_db, 'w', encoding='utf-8') as archivo:
-                json.dump(usuarios, archivo, ensure_ascii=False, indent=2)
+                json.dump(usuarios, archivo, ensure_ascii=False, indent=4)
             
             print(f"✅ Usuario '{datos_usuario['usuario']}' agregado a la base de datos")
             return True
@@ -135,48 +161,91 @@ class PantallaLogin(Screen):
         except Exception as e:
             print(f"❌ Error al agregar usuario a DB: {e}")
             return False
-    
+
+# ==========================================
+# PARTE 4: VERIFICACIÓN DE CREDENCIALES (CORREGIDA)
+# ==========================================
+
     def verificar_credenciales(self, usuario, contrasena):
         """Verifica las credenciales contra la base de datos"""
         try:
             # Verificar si el archivo existe
             if not os.path.exists(self.usuarios_db):
                 print(f"❌ Base de datos no encontrada: {self.usuarios_db}")
-                return False, "Base de datos no encontrada"
+                # Crear la base de datos si no existe
+                self.crear_db_usuarios_si_no_existe()
             
-            # Leer la base de datos
-            with open(self.usuarios_db, 'r', encoding='utf-8') as archivo:
-                usuarios = json.load(archivo)
+            # Leer la base de datos con manejo de errores mejorado
+            try:
+                with open(self.usuarios_db, 'r', encoding='utf-8') as archivo:
+                    contenido = archivo.read().strip()
+                    if not contenido:
+                        print("❌ Archivo de base de datos está vacío")
+                        self.crear_db_usuarios_si_no_existe()
+                        # Intentar leer nuevamente
+                        with open(self.usuarios_db, 'r', encoding='utf-8') as archivo:
+                            usuarios = json.load(archivo)
+                    else:
+                        usuarios = json.loads(contenido)
+            except json.JSONDecodeError as e:
+                print(f"❌ Error al decodificar JSON: {e}")
+                print("🔄 Recreando base de datos...")
+                self.crear_db_usuarios_si_no_existe()
+                with open(self.usuarios_db, 'r', encoding='utf-8') as archivo:
+                    usuarios = json.load(archivo)
             
-            print(f"🔍 Base de datos cargada. Usuarios disponibles: {list(usuarios.keys())}")
+            # Verificar que usuarios es un diccionario
+            if not isinstance(usuarios, dict):
+                print(f"❌ Formato incorrecto en base de datos. Tipo: {type(usuarios)}")
+                print(f"Contenido: {usuarios}")
+                return False, "Error en formato de base de datos"
+            
+            print(f"🔍 Base de datos cargada correctamente. Usuarios disponibles: {list(usuarios.keys())}")
             print(f"🔍 Buscando usuario: '{usuario}'")
             
-            if usuario in usuarios:
-                usuario_data = usuarios[usuario]
+            # Buscar usuario (insensible a mayúsculas)
+            usuario_lower = usuario.lower()
+            usuario_encontrado = None
+            
+            for user_key in usuarios.keys():
+                if user_key.lower() == usuario_lower:
+                    usuario_encontrado = user_key
+                    break
+            
+            if usuario_encontrado:
+                usuario_data = usuarios[usuario_encontrado]
+                
+                # Verificar que usuario_data es un diccionario
+                if not isinstance(usuario_data, dict):
+                    print(f"❌ Datos de usuario en formato incorrecto: {type(usuario_data)}")
+                    return False, "Error en datos de usuario"
+                
                 contrasena_guardada = usuario_data.get('contrasena', '')
                 
-                print(f"🔍 Usuario encontrado. Contraseña guardada: '{contrasena_guardada}'")
+                print(f"🔍 Usuario encontrado: '{usuario_encontrado}'")
+                print(f"🔍 Contraseña guardada: '{contrasena_guardada}'")
                 print(f"🔍 Contraseña ingresada: '{contrasena}'")
                 
                 if contrasena_guardada == contrasena:
-                    print(f"✅ Login exitoso para usuario: {usuario}")
+                    print(f"✅ Login exitoso para usuario: {usuario_encontrado}")
                     return True, usuario_data
                 else:
-                    print(f"❌ Contraseña incorrecta para usuario: {usuario}")
-                    print(f"   Esperada: '{contrasena_guardada}' | Recibida: '{contrasena}'")
+                    print(f"❌ Contraseña incorrecta para usuario: {usuario_encontrado}")
                     return False, "Contraseña incorrecta"
             else:
                 print(f"❌ Usuario no encontrado: '{usuario}'")
                 print(f"   Usuarios disponibles: {list(usuarios.keys())}")
                 return False, "Usuario no existe"
                 
-        except json.JSONDecodeError as e:
-            print(f"❌ Error al decodificar JSON: {e}")
-            return False, "Error en formato de base de datos"
         except Exception as e:
-            print(f"❌ Error al verificar credenciales: {e}")
+            print(f"❌ Error general al verificar credenciales: {e}")
+            print(f"❌ Tipo de error: {type(e)}")
             return False, f"Error del sistema: {str(e)}"
-    
+
+# ==========================================
+# PARTE 5: GESTIÓN DE CREDENCIALES GUARDADAS
+# ==========================================
+
     def cargar_credenciales_guardadas(self):
         """Carga las credenciales guardadas del archivo si existen"""
         try:
@@ -220,7 +289,11 @@ class PantallaLogin(Screen):
                 print("🗑️ Credenciales eliminadas del archivo")
         except Exception as e:
             print(f"❌ Error al eliminar credenciales: {e}")
-    
+
+# ==========================================
+# PARTE 6: CREACIÓN DE LA INTERFAZ
+# ==========================================
+
     def crear_interfaz(self):
         # Layout principal con fondo negro
         layout_principal = BoxLayout(
@@ -256,21 +329,40 @@ class PantallaLogin(Screen):
         self.input_usuario.bind(text=self._guardar_usuario)
         layout_principal.add_widget(self.input_usuario)
         
-        # Campo Contraseña
+        # CAMPO CONTRASEÑA CON BOTÓN OJO (MODIFICADO)
+        password_layout = BoxLayout(
+            orientation='horizontal',
+            size_hint_y=None,
+            height=dp(50),
+            spacing=dp(0)
+        )
+        
         self.input_contrasena = TextInput(
             hint_text=self._obtener_texto_hint('contrasena'),
             multiline=False,
             password=True,
             font_size=dp(18),
-            size_hint_y=None,
-            height=dp(50),
             background_color=(0.9, 0.9, 0.9, 1),
             foreground_color=(0, 0, 0, 1),
-            padding=[dp(15), dp(10)],
+            padding=[dp(15), dp(10), dp(55), dp(10)],  # Padding derecho más amplio para el botón
             text=self.valores_guardados['contrasena']
         )
         self.input_contrasena.bind(text=self._guardar_contrasena)
-        layout_principal.add_widget(self.input_contrasena)
+        
+        # Botón ojo para mostrar/ocultar contraseña
+        self.btn_toggle_password = Button(
+            text='👁',
+            size_hint_x=None,
+            width=dp(50),
+            font_size=dp(20),
+            background_color=(0.7, 0.7, 0.7, 1),
+            color=(0, 0, 0, 1)
+        )
+        self.btn_toggle_password.bind(on_press=self.toggle_password_visibility)
+        
+        password_layout.add_widget(self.input_contrasena)
+        password_layout.add_widget(self.btn_toggle_password)
+        layout_principal.add_widget(password_layout)
         
         # Checkbox "Recordar"
         checkbox_layout = BoxLayout(
@@ -376,14 +468,35 @@ class PantallaLogin(Screen):
         layout_principal.add_widget(Label(size_hint_y=0.2))
         
         self.add_widget(layout_principal)
-    
+
+# ==========================================
+# PARTE 7: FUNCIÓN NUEVA - TOGGLE CONTRASEÑA
+# ==========================================
+
+    def toggle_password_visibility(self, instance):
+        """Alterna entre mostrar y ocultar la contraseña"""
+        if self.input_contrasena.password:
+            # Mostrar contraseña
+            self.input_contrasena.password = False
+            self.btn_toggle_password.text = '🙈'
+            print("👁️ Contraseña visible")
+        else:
+            # Ocultar contraseña
+            self.input_contrasena.password = True
+            self.btn_toggle_password.text = '👁'
+            print("🙈 Contraseña oculta")
+
+# ==========================================
+# PARTE 8: FUNCIONES AUXILIARES DE INTERFAZ (SIN UTILS)
+# ==========================================
+
     def _update_bg_rect(self, instance, value):
         """Actualizar rectángulo de fondo"""
         self.bg_rect.pos = instance.pos
         self.bg_rect.size = instance.size
     
     def _obtener_texto(self, clave):
-        """Obtiene texto según el idioma actual"""
+        """Obtiene texto según el idioma actual - SIN DEPENDENCIA UTILS"""
         if self.idioma == 'en':
             traducciones = {
                 'recordar': 'Remember me',
@@ -426,16 +539,11 @@ class PantallaLogin(Screen):
                 'actualizacion_disponible': 'Actualización Disponible',
                 'si_actualizar': 'Sí, Actualizar',
                 'no_actualizar': 'Ahora No',
-                'descargando': 'Descargando'
+                'descargando': 'Descargando',
+                'campos_vacios': 'Por favor, completa todos los campos',
+                'aceptar': 'Aceptar'
             }
-            
-            if clave in traducciones_es:
-                return traducciones_es[clave]
-            
-            try:
-                return obtener_texto(clave)
-            except:
-                return clave.replace('_', ' ').title()
+            return traducciones_es.get(clave, clave.replace('_', ' ').title())
     
     def _obtener_texto_hint(self, campo):
         """Obtiene hint text según el idioma"""
@@ -451,7 +559,11 @@ class PantallaLogin(Screen):
                 'contrasena': 'Contraseña'
             }
             return hints.get(campo, campo.title())
-    
+
+# ==========================================
+# PARTE 9: FUNCIONES DE GUARDADO DE DATOS
+# ==========================================
+
     def _guardar_usuario(self, instance, valor):
         """Guarda el valor del campo usuario"""
         self.valores_guardados['usuario'] = valor
@@ -467,7 +579,11 @@ class PantallaLogin(Screen):
         
         if not valor:
             self.eliminar_credenciales_guardadas()
-    
+
+# ==========================================
+# PARTE 10: FUNCIONES DE CAMBIO DE IDIOMA
+# ==========================================
+
     def cambiar_a_espanol(self, instance):
         """Cambia el idioma a español preservando valores"""
         if self.idioma != 'es':
@@ -499,7 +615,11 @@ class PantallaLogin(Screen):
         self.crear_interfaz()
         
         print("✅ Interfaz actualizada con valores preservados y idioma aplicado")
-    
+
+# ==========================================
+# PARTE 11: PROCESO DE INICIAR SESIÓN
+# ==========================================
+
     def iniciar_sesion(self, instance):
         """Maneja el inicio de sesión con validación real"""
         usuario = self.input_usuario.text.strip()
@@ -562,7 +682,11 @@ class PantallaLogin(Screen):
                 "❌ " + self._obtener_texto('error'),
                 mensaje_detallado
             )
-    
+
+# ==========================================
+# PARTE 12: FUNCIONES DE BOTONES ADICIONALES
+# ==========================================
+
     def crear_usuario(self, instance):
         """Navegar a crear usuario - Funcionalidad real"""
         print("👤 Navegando a pantalla de crear usuario...")
@@ -596,58 +720,3 @@ class PantallaLogin(Screen):
             "🔄 " + self._obtener_texto('actualizaciones'),
             self._obtener_texto('verificando_actualizaciones') + "\n\n(Función implementada - configura GitHub repo)"
         )
-    
-    def mostrar_popup(self, titulo, mensaje):
-        """Muestra un popup informativo"""
-        content = BoxLayout(
-            orientation='vertical',
-            padding=dp(20),
-            spacing=dp(15)
-        )
-        
-        label = Label(
-            text=mensaje,
-            font_size=dp(16),
-            text_size=(dp(300), None),
-            halign='center',
-            color=(0, 0, 0, 1)
-        )
-        content.add_widget(label)
-        
-        btn_cerrar = Button(
-            text=self._obtener_texto('aceptar'),
-            size_hint_y=None,
-            height=dp(40),
-            font_size=dp(16)
-        )
-        content.add_widget(btn_cerrar)
-        
-        popup = Popup(
-            title=titulo,
-            content=content,
-            size_hint=(0.8, 0.4),
-            auto_dismiss=False
-        )
-        
-        btn_cerrar.bind(on_press=popup.dismiss)
-        popup.open()
-    
-    def limpiar_campos(self):
-        """Limpia todos los campos (para logout)"""
-        self.valores_guardados = {
-            'usuario': '',
-            'contrasena': '',
-            'recordar': False
-        }
-        if self.input_usuario:
-            self.input_usuario.text = ''
-        if self.input_contrasena:
-            self.input_contrasena.text = ''
-        if self.checkbox_recordar:
-            self.checkbox_recordar.active = False
-    
-    def cerrar_sesion_completo(self):
-        """Cierra sesión y elimina credenciales guardadas"""
-        self.eliminar_credenciales_guardadas()
-        self.limpiar_campos()
-        print("🚪 Sesión cerrada y credenciales eliminadas")

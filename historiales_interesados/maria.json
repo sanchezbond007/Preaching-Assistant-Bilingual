@@ -1,0 +1,47 @@
+[
+  {
+    "titulo": "Primera conversación con Maria",
+    "respuesta": "Conocí a Maria en el servicio del campo. Mostramos interés en temas bíblicos.",
+    "origen": "demo",
+    "fecha": "04/06/2025",
+    "hora": "21:20",
+    "timestamp": "2025-06-04T21:20:18.746510",
+    "nombre_interesado": "Maria"
+  },
+  {
+    "titulo": "Reino de Dios - Mateo 6:9-10",
+    "respuesta": "El Reino de Dios es un gobierno real establecido por Jehová en los cielos. Jesús enseñó a orar por este reino en el Padrenuestro.",
+    "origen": "demo",
+    "fecha": "04/06/2025",
+    "hora": "21:20",
+    "timestamp": "2025-06-04T21:20:18.797411",
+    "nombre_interesado": "Maria"
+  },
+  {
+    "titulo": "Esperanza de la resurrección - Juan 5:28-29",
+    "respuesta": "La Biblia enseña que habrá una resurrección tanto de justos como de injustos. Esto da esperanza para el futuro.",
+    "origen": "demo",
+    "fecha": "04/06/2025",
+    "hora": "21:20",
+    "timestamp": "2025-06-04T21:20:18.807355",
+    "nombre_interesado": "Maria"
+  },
+  {
+    "titulo": "Vida eterna en la Tierra - Salmo 37:29",
+    "respuesta": "Los justos heredarán la tierra y vivirán en ella para siempre. Esta es la esperanza bíblica original.",
+    "origen": "demo",
+    "fecha": "04/06/2025",
+    "hora": "21:20",
+    "timestamp": "2025-06-04T21:20:18.818928",
+    "nombre_interesado": "Maria"
+  },
+  {
+    "titulo": "Nombre de Dios - Éxodo 6:3",
+    "respuesta": "El nombre personal de Dios es Jehová (YHWH en hebreo). Este nombre aparece cerca de 7,000 veces en la Biblia.",
+    "origen": "demo",
+    "fecha": "04/06/2025",
+    "hora": "21:20",
+    "timestamp": "2025-06-04T21:20:18.829067",
+    "nombre_interesado": "Maria"
+  }
+]

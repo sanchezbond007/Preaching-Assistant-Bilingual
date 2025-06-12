@@ -1,0 +1,28 @@
+{
+  "titulo": {
+    "es": "¿Quién fue Adán?",
+    "en": "Who was Adam?"
+  },
+  "contenido": {
+    "es": "El primer hombre creado por Dios. Su desobediencia trajo el pecado.",
+    "en": "The first man created by God. His disobedience brought sin."
+  },
+  "cita": "Génesis 2:7",
+  "argumentos": {
+    "argumentos_biblicos": [],
+    "argumentos_logicos": [],
+    "argumentos_historicos": []
+  },
+  "versiculos": [
+    "Génesis 2:7"
+  ],
+  "enlaces": [
+    "https://www.jw.org/es/biblioteca/revistas/wp20140701/adán-primer-hombre/"
+  ],
+  "fuentes_recomendadas": [],
+  "conclusion": {
+    "es": "",
+    "en": ""
+  },
+  "categoria": "Doctrina"
+}

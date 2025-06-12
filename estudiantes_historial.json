@@ -1,0 +1,256 @@
+{
+  "estudiantes": {
+    "maria_gonzalez": {
+      "nombre": "María González",
+      "telefono": "+1234567890",
+      "email": "maria@email.com",
+      "fecha_inicio": "2024-01-15",
+      "sesiones": [
+        {
+          "fecha": "2024-12-01 10:00:00",
+          "consultas": [
+            {
+              "timestamp": "2024-12-01 10:15:00",
+              "fuente": "sugerencias",
+              "titulo": "¿Quién es Dios?",
+              "contenido": "Dios es el Creador del cielo y la tierra, el Ser Supremo. Su nombre es Jehová.\n\nSalmo 83:18 - 'Para que la gente sepa que tú, cuyo nombre es Jehová, tú solo eres el Altísimo sobre toda la tierra.'",
+              "idioma": "es"
+            }
+          ]
+        }
+      ]
+    },
+    "carlos_rivera": {
+      "nombre": "Carlos Rivera",
+      "telefono": "+0987654321",
+      "email": "carlos@email.com",
+      "fecha_inicio": "2024-02-10",
+      "sesiones": [
+        {
+          "fecha": "2024-12-01 14:30:00",
+          "consultas": [
+            {
+              "timestamp": "2024-12-01 14:45:00",
+              "fuente": "temas_profundos",
+              "titulo": "¿Por qué permite Dios el sufrimiento?",
+              "contenido": "Dios permite temporalmente el sufrimiento para resolver las cuestiones planteadas en Edén.\n\nJeremías 10:23 - 'Bien sé yo, oh Jehová, que al hombre terrestre no le pertenece su camino.'",
+              "idioma": "es"
+            }
+          ]
+        }
+      ]
+    },
+    "ana_martinez": {
+      "nombre": "Ana Martínez",
+      "telefono": "+1122334455",
+      "email": "ana@email.com",
+      "fecha_inicio": "2024-03-05",
+      "sesiones": []
+    },
+    "juan": {
+      "nombre": "Juan",
+      "telefono": "",
+      "email": "",
+      "fecha_inicio": "2025-06-06",
+      "sesiones": [
+        {
+          "fecha": "2025-06-06 09:50:59",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 12:46:38",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 12:52:16",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 13:09:40",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 14:04:28",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 14:11:00",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 14:13:55",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 14:15:30",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 14:24:13",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 14:27:33",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 14:33:33",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 14:37:37",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 14:41:33",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 15:12:12",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 15:18:26",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 16:13:05",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 16:20:25",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 18:29:56",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 18:38:33",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 18:48:48",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 18:53:05",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 19:00:42",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 19:03:43",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 19:14:03",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 19:25:27",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 19:33:52",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 19:35:21",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 19:41:37",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 19:48:34",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 19:56:09",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 20:33:46",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 20:34:20",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 20:36:23",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 20:36:59",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 20:37:34",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 20:39:43",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 20:41:46",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 20:44:18",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-06 20:46:23",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-07 08:16:54",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-07 08:31:08",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-07 08:58:11",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-07 09:26:02",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-07 12:17:56",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-07 12:27:26",
+          "consultas": []
+        },
+        {
+          "fecha": "2025-06-07 12:28:10",
+          "consultas": []
+        }
+      ]
+    },
+    "jjuan": {
+      "nombre": "jjuan",
+      "telefono": "",
+      "email": "",
+      "fecha_inicio": "2025-06-06",
+      "sesiones": [
+        {
+          "fecha": "2025-06-06 11:21:42",
+          "consultas": []
+        }
+      ]
+    }
+  },
+  "ultima_actualizacion": "2025-06-07T12:28:10.497793"
+}

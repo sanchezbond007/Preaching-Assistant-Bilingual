@@ -1,473 +1,339 @@
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
 from kivy.metrics import dp
-from kivy.graphics import Color, RoundedRectangle, Line
-from utils.traducciones import obtener_texto
+from kivy.graphics import Color, RoundedRectangle
+import json
+import os
 
-class ModernTextInput(TextInput):
-    """TextInput personalizado con diseño moderno"""
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.background_color = (0, 0, 0, 0)  # Transparent
-        self.foreground_color = (1, 1, 1, 1)  # White text
-        self.cursor_color = (0.3, 0.7, 1, 1)  # Blue cursor
-        self.selection_color = (0.3, 0.7, 1, 0.3)  # Blue selection
-        
-    def on_focus(self, instance, value):
-        super().on_focus(instance, value)
-        self.update_graphics()
-    
-    def update_graphics(self):
-        self.canvas.before.clear()
-        with self.canvas.before:
-            if self.focus:
-                Color(0.2, 0.6, 1, 0.8)  # Blue when focused
-            else:
-                Color(0.3, 0.3, 0.3, 0.8)  # Gray when not focused
-            RoundedRectangle(pos=self.pos, size=self.size, radius=[dp(10)])
-            
-            # Border
-            Color(0.5, 0.5, 0.5, 1) if not self.focus else Color(0.3, 0.7, 1, 1)
-            Line(rounded_rectangle=(self.x, self.y, self.width, self.height, dp(10)), width=dp(2))
+# Función de respaldo SUPER SIMPLE
+def obtener_texto(key):
+    textos = {
+        'crear_usuario': 'Crear Usuario',
+        'nombre': 'Nombre',
+        'apellido': 'Apellido',
+        'telefono': 'Teléfono',
+        'correo': 'Correo',
+        'usuario': 'Usuario',
+        'contrasena': 'Contraseña',
+        'aceptar': 'Guardar',
+        'volver': 'Volver'
+    }
+    return textos.get(key, key)
 
 class PantallaCrearUsuario(Screen):
     def __init__(self, **kwargs):
-        # Extraer callbacks personalizados
+        print("🚀 === INICIO PantallaCrearUsuario ===")
+        
+        # Extraer callbacks
         self.guardar_callback = kwargs.pop('guardar_callback', None)
         self.volver_callback = kwargs.pop('volver_callback', None)
-        self.idioma = kwargs.pop('idioma', 'es')
         
         super().__init__(**kwargs)
         self.name = 'crear_usuario'
+        
+        print(f"📋 Callbacks configurados:")
+        print(f"   - guardar_callback: {type(self.guardar_callback)}")
+        print(f"   - volver_callback: {type(self.volver_callback)}")
+        
+        # Crear interfaz INMEDIATAMENTE
+        print("🔧 Llamando crear_interfaz()...")
         self.crear_interfaz()
+        print("✅ crear_interfaz() completado")
     
     def crear_interfaz(self):
-        # Layout principal con scroll
-        scroll = ScrollView()
+        print("🔧 === CREANDO INTERFAZ ===")
         
-        layout_principal = BoxLayout(
+        # Limpiar todo
+        self.clear_widgets()
+        
+        # Layout principal
+        main_layout = BoxLayout(
             orientation='vertical',
-            padding=dp(25),
-            spacing=dp(20),
-            size_hint_y=None
-        )
-        layout_principal.bind(minimum_height=layout_principal.setter('height'))
-        
-        # Gradiente de fondo
-        with layout_principal.canvas.before:
-            Color(0.1, 0.1, 0.15, 1)  # Dark blue-gray
-            self.bg_rect = RoundedRectangle(
-                pos=layout_principal.pos, 
-                size=layout_principal.size,
-                radius=[dp(0)]
-            )
-            layout_principal.bind(size=self._update_bg_rect, pos=self._update_bg_rect)
-        
-        # Header con icono y título
-        header_layout = BoxLayout(
-            orientation='horizontal',
-            size_hint_y=None,
-            height=dp(80),
+            padding=dp(20),
             spacing=dp(15)
         )
         
-        # Icono de usuario
-        icon_label = Label(
-            text='👤',
-            font_size=dp(45),
-            size_hint_x=None,
-            width=dp(60),
-            color=(0.3, 0.7, 1, 1)
-        )
-        
-        # Título
+        # Título SIMPLE
         titulo = Label(
-            text=obtener_texto('crear_usuario').replace('_', ' ').title(),
-            font_size=dp(32),
-            bold=True,
-            color=(1, 1, 1, 1),
-            text_size=(None, None),
-            halign='left',
-            valign='middle'
-        )
-        
-        header_layout.add_widget(icon_label)
-        header_layout.add_widget(titulo)
-        layout_principal.add_widget(header_layout)
-        
-        # Línea decorativa
-        line_layout = BoxLayout(size_hint_y=None, height=dp(3))
-        with line_layout.canvas:
-            Color(0.3, 0.7, 1, 1)
-            RoundedRectangle(pos=line_layout.pos, size=line_layout.size, radius=[dp(2)])
-        layout_principal.add_widget(line_layout)
-        
-        # Espaciador
-        layout_principal.add_widget(Label(size_hint_y=None, height=dp(20)))
-        
-        # Contenedor de campos con diseño en tarjeta
-        card_layout = BoxLayout(
-            orientation='vertical',
-            spacing=dp(15),
+            text='👤 CREAR USUARIO 👤',
+            font_size=dp(24),
             size_hint_y=None,
-            padding=dp(20)
+            height=dp(60),
+            color=(1, 1, 1, 1)
         )
+        main_layout.add_widget(titulo)
+        print("✅ Título añadido")
         
-        # Fondo de la tarjeta
-        with card_layout.canvas.before:
-            Color(0.15, 0.15, 0.2, 0.9)
-            self.card_rect = RoundedRectangle(
-                pos=card_layout.pos,
-                size=card_layout.size,
-                radius=[dp(15)]
-            )
-            card_layout.bind(size=self._update_card_rect, pos=self._update_card_rect)
-        
-        # Lista de campos con iconos
-        campos = [
-            ('nombre', 'Nombre', '👤'),
-            ('apellido', 'Apellido', '👥'),
-            ('telefono', 'Teléfono', '📱'),
-            ('correo', 'Correo electrónico', '📧'),
-            ('usuario', 'Nombre de usuario', '🔑'),
-            ('contrasena', 'Contraseña', '🔒')
-        ]
-        
+        # Campos SUPER SIMPLES
+        campos = ['nombre', 'apellido', 'telefono', 'correo', 'usuario', 'contrasena']
         self.inputs = {}
         
-        for clave, placeholder, icono in campos:
-            # Contenedor para cada campo
-            campo_container = BoxLayout(
-                orientation='vertical',
-                size_hint_y=None,
-                height=dp(85),
-                spacing=dp(8)
-            )
+        for campo in campos:
+            print(f"📝 Creando campo: {campo}")
             
-            # Header del campo con icono y etiqueta
-            campo_header = BoxLayout(
-                orientation='horizontal',
-                size_hint_y=None,
-                height=dp(25),
-                spacing=dp(10)
-            )
-            
-            icono_label = Label(
-                text=icono,
+            # Etiqueta
+            label = Label(
+                text=f"{obtener_texto(campo)}:",
                 font_size=dp(16),
-                size_hint_x=None,
-                width=dp(25),
-                color=(0.3, 0.8, 0.4, 1)  # Verde como el botón
+                size_hint_y=None,
+                height=dp(30),
+                color=(1, 1, 1, 1),
+                halign='left'
             )
+            label.bind(size=label.setter('text_size'))
+            main_layout.add_widget(label)
             
-            try:
-                texto_label = obtener_texto(clave)
-            except:
-                texto_label = placeholder
-                
-            etiqueta = Label(
-                text=texto_label,
-                font_size=dp(16),
-                color=(1, 1, 1, 1),  # Blanco para mejor contraste
-                text_size=(None, None),
-                halign='left',
-                valign='middle'
-            )
-            
-            campo_header.add_widget(icono_label)
-            campo_header.add_widget(etiqueta)
-            campo_container.add_widget(campo_header)
-            
-            # Campo de entrada visible con fondo claro
+            # Input BÁSICO
             input_field = TextInput(
-                hint_text=f"Ingresa tu {texto_label.lower()}",
+                hint_text=f"Ingresa tu {campo}",
                 multiline=False,
                 font_size=dp(16),
                 size_hint_y=None,
-                height=dp(45),
-                password=(clave == 'contrasena'),
-                background_color=(0.9, 0.9, 0.9, 1),  # Fondo blanco/gris claro
-                foreground_color=(0, 0, 0, 1),  # Texto negro
-                cursor_color=(0.3, 0.8, 0.4, 1),  # Cursor verde
-                selection_color=(0.3, 0.8, 0.4, 0.3),  # Selección verde
-                padding=[dp(15), dp(10)],
-                border=(0, 0, 0, 0)  # Sin borde por defecto
+                height=dp(40),
+                password=(campo == 'contrasena')
             )
             
-            # Fondo personalizado con borde verde
-            with input_field.canvas.before:
-                Color(0.95, 0.95, 0.95, 1)  # Fondo gris muy claro
-                self.input_bg = RoundedRectangle(
-                    pos=input_field.pos,
-                    size=input_field.size,
-                    radius=[dp(8)]
-                )
-                Color(0.3, 0.8, 0.4, 1)  # Borde verde
-                self.input_border = Line(
-                    rounded_rectangle=(input_field.x, input_field.y, input_field.width, input_field.height, dp(8)),
-                    width=dp(2)
-                )
-            
-            # Actualizar gráficos cuando cambie
-            def update_input_graphics(input_widget):
-                input_widget.canvas.before.clear()
-                with input_widget.canvas.before:
-                    # Fondo
-                    Color(0.95, 0.95, 0.95, 1) if not input_widget.focus else Color(1, 1, 1, 1)
-                    RoundedRectangle(pos=input_widget.pos, size=input_widget.size, radius=[dp(8)])
-                    # Borde
-                    if input_widget.focus:
-                        Color(0.2, 0.7, 0.3, 1)  # Verde más intenso cuando tiene foco
-                    else:
-                        Color(0.3, 0.8, 0.4, 0.7)  # Verde normal
-                    Line(
-                        rounded_rectangle=(input_widget.x, input_widget.y, input_widget.width, input_widget.height, dp(8)),
-                        width=dp(2)
-                    )
-            
-            input_field.bind(pos=lambda x, y: update_input_graphics(input_field))
-            input_field.bind(size=lambda x, y: update_input_graphics(input_field))
-            input_field.bind(focus=lambda x, y: update_input_graphics(input_field))
-            
-            self.inputs[clave] = input_field
-            campo_container.add_widget(input_field)
-            card_layout.add_widget(campo_container)
+            self.inputs[campo] = input_field
+            main_layout.add_widget(input_field)
+            print(f"   ✅ Campo {campo} creado")
         
-        # Calcular altura de la tarjeta
-        card_layout.height = len(campos) * dp(93) + dp(40)
-        layout_principal.add_widget(card_layout)
+        print(f"📋 Total inputs creados: {len(self.inputs)}")
+        print(f"🔑 Keys: {list(self.inputs.keys())}")
         
         # Espaciador
-        layout_principal.add_widget(Label(size_hint_y=None, height=dp(30)))
+        main_layout.add_widget(Label(size_hint_y=None, height=dp(20)))
         
-        # Botones con diseño moderno
-        botones_layout = BoxLayout(
-            orientation='vertical',
-            spacing=dp(15),
-            size_hint_y=None,
-            height=dp(130)
-        )
-        
-        # Botón Guardar (principal)
+        # BOTÓN GUARDAR - ULTRA SIMPLE
+        print("🔧 Creando botón GUARDAR...")
         btn_guardar = Button(
-            text=f"✓  {obtener_texto('aceptar').upper()}",
-            size_hint_y=None,
-            height=dp(55),
-            font_size=dp(20),
-            bold=True,
-            background_color=(0, 0, 0, 0),  # Transparent
-            color=(1, 1, 1, 1)
-        )
-        
-        # Fondo personalizado para botón guardar
-        with btn_guardar.canvas.before:
-            Color(0.2, 0.7, 0.3, 1)  # Green
-            self.btn_guardar_bg = RoundedRectangle(
-                pos=btn_guardar.pos,
-                size=btn_guardar.size,
-                radius=[dp(25)]
-            )
-            btn_guardar.bind(size=lambda x, y: self._update_btn_guardar_bg(btn_guardar))
-            btn_guardar.bind(pos=lambda x, y: self._update_btn_guardar_bg(btn_guardar))
-        
-        btn_guardar.bind(on_press=self.guardar_usuario)
-        botones_layout.add_widget(btn_guardar)
-        
-        # Botón Volver (secundario)
-        btn_volver = Button(
-            text=f"←  {obtener_texto('volver').upper()}",
-            size_hint_y=None,
-            height=dp(55),
+            text='💾 GUARDAR USUARIO',
             font_size=dp(18),
-            background_color=(0, 0, 0, 0),  # Transparent
-            color=(0.8, 0.8, 0.8, 1)
+            size_hint_y=None,
+            height=dp(50),
+            background_color=(0, 0.8, 0, 1)  # Verde sólido
         )
         
-        # Fondo personalizado para botón volver
-        with btn_volver.canvas.before:
-            Color(0.4, 0.4, 0.4, 0.8)  # Gray
-            self.btn_volver_bg = RoundedRectangle(
-                pos=btn_volver.pos,
-                size=btn_volver.size,
-                radius=[dp(25)]
-            )
-            btn_volver.bind(size=lambda x, y: self._update_btn_volver_bg(btn_volver))
-            btn_volver.bind(pos=lambda x, y: self._update_btn_volver_bg(btn_volver))
+        # TEST: Múltiples formas de binding
+        print("🔗 Configurando binding del botón...")
         
-        btn_volver.bind(on_press=self.volver_login)
-        botones_layout.add_widget(btn_volver)
+        def test_click_guardar(instance):
+            print("🔥 === BOTÓN GUARDAR CLICKEADO ===")
+            print(f"🔥 Instance: {instance}")
+            print(f"🔥 Instance.text: {instance.text}")
+            self.handle_guardar()
         
-        layout_principal.add_widget(botones_layout)
+        btn_guardar.bind(on_press=test_click_guardar)
+        btn_guardar.bind(on_release=lambda x: print("🔥 BOTÓN GUARDAR RELEASED"))
         
-        # Espaciador final
-        layout_principal.add_widget(Label(size_hint_y=None, height=dp(30)))
+        main_layout.add_widget(btn_guardar)
+        print("✅ Botón GUARDAR añadido y configurado")
         
-        scroll.add_widget(layout_principal)
-        self.add_widget(scroll)
-    
-    def _update_bg_rect(self, instance, value):
-        self.bg_rect.pos = instance.pos
-        self.bg_rect.size = instance.size
-    
-    def _update_card_rect(self, instance, value):
-        self.card_rect.pos = instance.pos
-        self.card_rect.size = instance.size
-    
-    def _update_btn_guardar_bg(self, btn):
-        self.btn_guardar_bg.pos = btn.pos
-        self.btn_guardar_bg.size = btn.size
-    
-    def _update_btn_volver_bg(self, btn):
-        self.btn_volver_bg.pos = btn.pos
-        self.btn_volver_bg.size = btn.size
-    
-    def actualizar_textos(self):
-        """Actualiza todos los textos de la interfaz"""
-        self.clear_widgets()
-        self.crear_interfaz()
-    
-    def guardar_usuario(self, instance):
-        """Maneja el guardado del usuario con validaciones mejoradas"""
-        datos_usuario = {}
-        campos_vacios = []
+        # BOTÓN VOLVER - ULTRA SIMPLE
+        print("🔧 Creando botón VOLVER...")
+        btn_volver = Button(
+            text='⬅️ VOLVER',
+            font_size=dp(18),
+            size_hint_y=None,
+            height=dp(50),
+            background_color=(0.5, 0.5, 0.5, 1)  # Gris sólido
+        )
         
+        def test_click_volver(instance):
+            print("🔥 === BOTÓN VOLVER CLICKEADO ===")
+            self.handle_volver()
+        
+        btn_volver.bind(on_press=test_click_volver)
+        main_layout.add_widget(btn_volver)
+        print("✅ Botón VOLVER añadido y configurado")
+        
+        # Añadir layout principal a la pantalla
+        self.add_widget(main_layout)
+        
+        print("✅ === INTERFAZ CREADA COMPLETAMENTE ===")
+        print(f"📊 Widgets en pantalla: {len(self.children)}")
+        print(f"📊 Widgets en main_layout: {len(main_layout.children)}")
+        
+        # VERIFICAR que los inputs existen
+        print("🔍 === VERIFICACIÓN FINAL ===")
         for campo, input_widget in self.inputs.items():
-            valor = input_widget.text.strip()
-            if not valor:
-                try:
-                    nombre_campo = obtener_texto(campo)
-                except:
-                    nombre_campo = campo
-                campos_vacios.append(nombre_campo)
-                # Resaltar campo vacío
-                with input_widget.canvas.before:
-                    Color(1, 0.3, 0.3, 0.3)  # Red highlight
-                    RoundedRectangle(pos=input_widget.pos, size=input_widget.size, radius=[dp(10)])
-            else:
-                datos_usuario[campo] = valor
-        
-        if campos_vacios:
-            self.mostrar_popup_moderno(
-                "⚠️ Campos Requeridos",
-                f"Por favor completa: {', '.join(campos_vacios)}",
-                "error"
-            )
-            return
-        
-        # Validaciones específicas
-        if '@' not in datos_usuario.get('correo', '') or '.' not in datos_usuario.get('correo', ''):
-            self.mostrar_popup_moderno(
-                "📧 Email Inválido",
-                "Por favor ingresa un correo electrónico válido",
-                "error"
-            )
-            return
-        
-        if len(datos_usuario.get('contrasena', '')) < 6:
-            self.mostrar_popup_moderno(
-                "🔒 Contraseña Débil",
-                "La contraseña debe tener al menos 6 caracteres",
-                "error"
-            )
-            return
-        
-        # Guardar usuario
-        if self.guardar_callback:
-            resultado = self.guardar_callback(datos_usuario)
-            if resultado:
-                self.mostrar_popup_moderno(
-                    "✅ ¡Éxito!",
-                    "Usuario creado correctamente",
-                    "success",
-                    self.volver_login
-                )
-        else:
-            self.mostrar_popup_moderno(
-                "✅ ¡Éxito!",
-                "Usuario creado correctamente",
-                "success",
-                self.volver_login
-            )
+            print(f"   ✅ {campo}: {type(input_widget)} - {input_widget}")
     
-    def volver_login(self, instance=None):
-        """Volver a la pantalla de login"""
+    def handle_guardar(self):
+        print("💾 === HANDLE GUARDAR INICIADO ===")
+        
+        try:
+            # Verificar inputs
+            if not hasattr(self, 'inputs'):
+                print("❌ ERROR: No existe self.inputs")
+                return
+                
+            if not self.inputs:
+                print("❌ ERROR: self.inputs está vacío")
+                return
+                
+            print(f"✅ self.inputs existe con {len(self.inputs)} campos")
+            
+            # Recopilar datos
+            datos = {}
+            for campo, input_widget in self.inputs.items():
+                valor = input_widget.text.strip()
+                datos[campo] = valor
+                print(f"   📝 {campo}: '{valor}'")
+            
+            # Verificar datos vacíos
+            campos_vacios = [k for k, v in datos.items() if not v]
+            if campos_vacios:
+                print(f"⚠️ Campos vacíos: {campos_vacios}")
+                self.mostrar_popup_simple("⚠️ Error", f"Completa: {', '.join(campos_vacios)}")
+                return
+            
+            print("✅ Todos los campos tienen datos")
+            
+            # Validaciones básicas
+            if '@' not in datos.get('correo', ''):
+                print("❌ Email inválido")
+                self.mostrar_popup_simple("❌ Error", "Email inválido")
+                return
+                
+            if len(datos.get('contrasena', '')) < 3:  # Reducido para test
+                print("❌ Contraseña muy corta")
+                self.mostrar_popup_simple("❌ Error", "Contraseña muy corta")
+                return
+            
+            print("✅ Validaciones OK")
+            
+            # Intentar guardar
+            if self.guardar_callback:
+                print("🔄 Usando callback...")
+                resultado = self.guardar_callback(datos)
+                print(f"📤 Resultado callback: {resultado}")
+            else:
+                print("💾 Guardando localmente...")
+                resultado = self.guardar_local(datos)
+                
+            if resultado:
+                print("🎉 GUARDADO EXITOSO")
+                self.mostrar_popup_simple("✅ Éxito", "Usuario creado!", self.handle_volver)
+            else:
+                print("❌ ERROR AL GUARDAR")
+                self.mostrar_popup_simple("❌ Error", "No se pudo guardar")
+                
+        except Exception as e:
+            print(f"💥 EXCEPCIÓN en handle_guardar: {e}")
+            import traceback
+            traceback.print_exc()
+            self.mostrar_popup_simple("💥 Error", f"Error: {e}")
+    
+    def handle_volver(self, *args):
+        print("🔙 === HANDLE VOLVER INICIADO ===")
+        
         if self.volver_callback:
+            print("🔄 Usando volver_callback...")
             self.volver_callback()
         else:
-            if self.manager and self.manager.has_screen('login'):
-                self.manager.current = 'login'
+            print("🔄 Usando screen manager...")
+            if self.manager:
+                pantallas = [s.name for s in self.manager.screens]
+                print(f"📋 Pantallas disponibles: {pantallas}")
+                
+                if 'login' in pantallas:
+                    print("✅ Navegando a login")
+                    self.manager.current = 'login'
+                elif 'inicial' in pantallas:
+                    print("✅ Navegando a inicial")
+                    self.manager.current = 'inicial'
+                else:
+                    print("❌ No se encontró pantalla destino")
+            else:
+                print("❌ No hay manager")
     
-    def mostrar_popup_moderno(self, titulo, mensaje, tipo="info", callback=None):
-        """Popup con diseño moderno"""
-        content = BoxLayout(
-            orientation='vertical',
-            padding=dp(25),
-            spacing=dp(20)
-        )
+    def guardar_local(self, datos):
+        try:
+            archivo = "usuarios_debug.json"
+            usuarios = []
+            
+            if os.path.exists(archivo):
+                with open(archivo, 'r') as f:
+                    usuarios = json.load(f)
+            
+            usuarios.append(datos)
+            
+            with open(archivo, 'w') as f:
+                json.dump(usuarios, f, indent=2)
+            
+            print(f"✅ Guardado en {archivo}")
+            return True
+            
+        except Exception as e:
+            print(f"❌ Error guardando: {e}")
+            return False
+    
+    def mostrar_popup_simple(self, titulo, mensaje, callback=None):
+        print(f"📱 Popup: {titulo} - {mensaje}")
         
-        # Color según el tipo
-        if tipo == "error":
-            color_bg = (1, 0.3, 0.3, 0.9)
-            color_texto = (1, 1, 1, 1)
-        elif tipo == "success":
-            color_bg = (0.3, 0.8, 0.4, 0.9)
-            color_texto = (1, 1, 1, 1)
-        else:
-            color_bg = (0.2, 0.6, 1, 0.9)
-            color_texto = (1, 1, 1, 1)
-        
-        # Fondo del contenido
-        with content.canvas.before:
-            Color(*color_bg)
-            self.popup_bg = RoundedRectangle(
-                pos=content.pos,
-                size=content.size,
-                radius=[dp(20)]
-            )
-            content.bind(size=lambda x, y: setattr(self.popup_bg, 'size', x.size))
-            content.bind(pos=lambda x, y: setattr(self.popup_bg, 'pos', x.pos))
+        content = BoxLayout(orientation='vertical', spacing=dp(10), padding=dp(10))
         
         label = Label(
             text=mensaje,
-            font_size=dp(18),
-            text_size=(dp(350), None),
-            halign='center',
-            valign='middle',
-            color=color_texto
+            font_size=dp(16),
+            text_size=(dp(250), None),
+            halign='center'
         )
         content.add_widget(label)
         
-        btn_cerrar = Button(
-            text="ENTENDIDO",
+        btn = Button(
+            text='OK',
             size_hint_y=None,
-            height=dp(50),
-            font_size=dp(16),
-            bold=True,
-            background_color=(1, 1, 1, 0.2),
-            color=(1, 1, 1, 1)
+            height=dp(40)
         )
-        content.add_widget(btn_cerrar)
+        content.add_widget(btn)
         
         popup = Popup(
             title=titulo,
-            title_size=dp(20),
             content=content,
-            size_hint=(0.85, 0.4),
-            auto_dismiss=False,
-            background_color=(0, 0, 0, 0),
-            separator_color=(0, 0, 0, 0)
+            size_hint=(0.8, 0.4),
+            auto_dismiss=False
         )
         
-        def cerrar_popup(instance):
+        def cerrar(instance):
             popup.dismiss()
             if callback:
                 callback()
         
-        btn_cerrar.bind(on_press=cerrar_popup)
+        btn.bind(on_press=cerrar)
         popup.open()
+
+# ===== TEST INDEPENDIENTE =====
+if __name__ == "__main__":
+    print("🧪 === TEST INDEPENDIENTE ===")
+    
+    from kivy.app import App
+    from kivy.uix.screenmanager import ScreenManager
+    
+    class DebugApp(App):
+        def build(self):
+            sm = ScreenManager()
+            
+            def test_guardar(datos):
+                print(f"🧪 CALLBACK GUARDAR: {datos}")
+                return True
+            
+            def test_volver():
+                print("🧪 CALLBACK VOLVER")
+            
+            pantalla = PantallaCrearUsuario(
+                guardar_callback=test_guardar,
+                volver_callback=test_volver
+            )
+            
+            sm.add_widget(pantalla)
+            sm.current = 'crear_usuario'
+            
+            return sm
+    
+    DebugApp().run()

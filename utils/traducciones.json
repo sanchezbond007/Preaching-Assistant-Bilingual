@@ -1,0 +1,14 @@
+{
+  "aviso_legal_texto": {
+    "es": "Este es el texto legal en español. Léelo con atención antes de continuar.",
+    "en": "This is the legal notice in English. Please read it carefully before continuing."
+  },
+  "acepto_terminos": {
+    "es": "Acepto los términos y condiciones",
+    "en": "I accept the terms and conditions"
+  },
+  "continuar": {
+    "es": "Continuar",
+    "en": "Continue"
+  }
+}

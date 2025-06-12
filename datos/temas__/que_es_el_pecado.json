@@ -1,0 +1,28 @@
+{
+  "titulo": {
+    "es": "¿Qué es el pecado?",
+    "en": "What is sin?"
+  },
+  "contenido": {
+    "es": "Es una violación de la ley de Dios, heredada desde Adán.",
+    "en": "It is a violation of God’s law, inherited from Adam."
+  },
+  "cita": "Romanos 5:12",
+  "argumentos": {
+    "argumentos_biblicos": [],
+    "argumentos_logicos": [],
+    "argumentos_historicos": []
+  },
+  "versiculos": [
+    "Romanos 5:12"
+  ],
+  "enlaces": [
+    "https://www.jw.org/es/biblioteca/revistas/g201411/que-es-el-pecado/"
+  ],
+  "fuentes_recomendadas": [],
+  "conclusion": {
+    "es": "",
+    "en": ""
+  },
+  "categoria": "Doctrina"
+}

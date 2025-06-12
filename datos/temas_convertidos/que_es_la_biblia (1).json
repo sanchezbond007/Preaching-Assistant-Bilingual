@@ -1,0 +1,37 @@
+{
+  "titulo": {
+    "es": "¿Qué es la Biblia?",
+    "en": "What is the Bible?"
+  },
+  "contenido": {
+    "es": "Es la Palabra inspirada de Dios para guiar a la humanidad.",
+    "en": "It is God’s inspired Word to guide humanity."
+  },
+  "respuesta": {
+    "es": "",
+    "en": ""
+  },
+  "cita": "",
+  "link": "",
+  "argumentos": {
+    "argumentos_biblicos": [],
+    "argumentos_logicos": [],
+    "argumentos_historicos": [],
+    "fuentes_recomendadas": []
+  },
+  "secciones": [],
+  "versiculos": [
+    "2 Timoteo 3:16"
+  ],
+  "enlaces": [
+    "https://www.jw.org/es/biblioteca/libros/buena-noticia-biblia-confiable/"
+  ],
+  "conclusion": {
+    "es": "",
+    "en": ""
+  },
+  "copyright": {
+    "es": "© 2025 Watch Tower Bible and Tract Society of Pennsylvania. Usado con fines educativos sin ánimo de lucro.",
+    "en": "© 2025 Watch Tower Bible and Tract Society of Pennsylvania. Used for educational, non-commercial purposes."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "usuario": "sanchezbond007",
+  "datos_usuario": {
+    "contrasena": "password123",
+    "nombre": "James",
+    "apellido": "Bond",
+    "email": "bond@secret.com"
+  },
+  "idioma": "es",
+  "timestamp_login": "2025-06-07T17:51:50.832912",
+  "sesion_activa": true
+}

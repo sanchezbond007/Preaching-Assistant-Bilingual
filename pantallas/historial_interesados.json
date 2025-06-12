@@ -1,0 +1,15 @@
+[
+  {
+    "nombre": "Maria",
+    "telefono": "000000000000",
+    "email": "",
+    "fecha_registro": "2025-06-08T18:55:26.534552",
+    "fecha_ultimo_contacto": "08/06/2025",
+    "idioma": "es",
+    "activo": true,
+    "temas_discutidos": [],
+    "notas": "Interesado registrado el 08/06/2025",
+    "metodo_contacto_preferido": "telefono",
+    "fecha_creacion": "2025-06-08T18:55:26.572507"
+  }
+]

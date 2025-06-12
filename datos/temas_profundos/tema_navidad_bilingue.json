@@ -1,130 +1,26 @@
 {
   "titulo": {
     "es": "¿Celebraron los primeros cristianos la Navidad?",
-    "en": "Did the early Christians celebrate Christmas?"
+    "en": "Did the Early Christians Celebrate Christmas?"
   },
   "contenido": {
-    "es": "Aunque millones de personas celebran la Navidad como el nacimiento de Jesús, muchos desconocen que los primeros cristianos no celebraban esta festividad. Desde la perspectiva de los Testigos de Jehová, la Navidad no tiene un origen bíblico, sino pagano.",
-    "en": "Although millions of people celebrate Christmas as Jesus' birth, many are unaware that the early Christians did not celebrate this holiday. From the perspective of Jehovah's Witnesses, Christmas has no biblical origin, but rather pagan."
+    "es": "Millones de personas celebran la Navidad como el nacimiento de Jesús, pero la Biblia y la historia revelan que los primeros cristianos no celebraban esta festividad. Desde el punto de vista de los Testigos de Jehová, la Navidad tiene un origen pagano y carece de base bíblica.\n\n🔹 Jesús mandó conmemorar su muerte, no su nacimiento\n> “Sigan haciendo esto en memoria de mí.” — Lucas 22:19\nJesús instituyó una conmemoración de su muerte, no de su nacimiento.\n\n🔹 La Biblia no da la fecha del nacimiento de Jesús\n> “Había pastores que vivían al aire libre y vigilaban sus rebaños durante la noche.” — Lucas 2:8\nEsto sugiere que Jesús no nació en diciembre, ya que en invierno los pastores no estarían al aire libre en Judea.\n\n🔹 La Biblia asocia cumpleaños con sucesos negativos\n> “En el cumpleaños de Herodes, mandó decapitar a Juan el Bautista.” — Marcos 6:21-29\n> “Mejor es el día de la muerte que el día del nacimiento.” — Eclesiastés 7:1\nLos únicos cumpleaños mencionados en la Biblia están vinculados con tragedias. Jesús nunca celebró el suyo ni pidió que se celebrara.\n\n🔹 Costumbres y símbolos navideños provienen de rituales paganos\n> Decoraciones como árboles, luces, intercambios de regalos y villancicos tienen sus raíces en festividades no cristianas como Saturnalia y Yule.\nIncluso la fecha del 25 de diciembre fue adoptada siglos después para coincidir con fiestas del solsticio.\n\n🔹 Evidencia histórica\n> La Navidad no fue celebrada por los cristianos del primer siglo. Se empezó a celebrar en el siglo IV.\n> La Enciclopedia Católica y otros documentos reconocen que su origen no es cristiano.\n\n✅ Conclusión\nLa evidencia bíblica e histórica demuestra que la Navidad no fue celebrada por Jesús ni por los primeros cristianos. Su origen pagano y la falta de mandato bíblico llevan a los Testigos de Jehová a no celebrarla, concentrándose en obedecer a Cristo y en honrar a Dios según su Palabra.",
+    
+    "en": "Millions of people celebrate Christmas as the birth of Jesus, but the Bible and history show that early Christians did not observe this holiday. From the viewpoint of Jehovah’s Witnesses, Christmas has pagan origins and lacks biblical support.\n\n🔹 Jesus commanded the commemoration of his death, not his birth\n> “Keep doing this in memory of me.” — Luke 22:19\nJesus instituted a memorial of his death, not a celebration of his birth.\n\n🔹 The Bible does not mention the date of Jesus' birth\n> “There were shepherds living outdoors and keeping watch over their flocks at night.” — Luke 2:8\nThis indicates Jesus could not have been born in December, as shepherds wouldn’t be outside in winter.\n\n🔹 The Bible links birthdays with tragic events\n> “On Herod’s birthday, he ordered the beheading of John the Baptist.” — Mark 6:21-29\n> “The day of death is better than the day of birth.” — Ecclesiastes 7:1\nBiblical references to birthdays are negative, and Jesus never celebrated his own.\n\n🔹 Christmas customs and symbols come from pagan rituals\n> Decorations like trees, lights, gift-giving, and caroling trace back to festivals such as Saturnalia and Yule.\nThe date of December 25 was chosen centuries later to coincide with pagan solstice observances.\n\n🔹 Historical evidence\n> Christmas was not celebrated by first-century Christians. It was officially adopted in the 4th century.\n> The Catholic Encyclopedia and other sources admit its non-Christian origin.\n\n✅ Conclusion\nBiblical and historical evidence shows that Christmas was not observed by Jesus or early Christians. Its pagan roots and the absence of a biblical directive are why Jehovah’s Witnesses do not celebrate it. Instead, they focus on obeying Christ and honoring God as outlined in the Scriptures."
   },
-  "conclusion": {
-    "es": "La evidencia bíblica e histórica muestra que la Navidad no fue celebrada por Jesús ni por los primeros cristianos. Su origen pagano y la ausencia de un mandato bíblico para su observancia llevan a los Testigos de Jehová a no celebrarla.",
-    "en": "Biblical and historical evidence shows that Christmas was not celebrated by Jesus or the early Christians. Its pagan origin and the absence of a biblical command for its observance lead Jehovah's Witnesses not to celebrate it."
-  },
-  "argumentos": {
-    "argumentos_biblicos": [
-      {
-        "titulo": {
-          "es": "Jesús mandó conmemorar su muerte, no su nacimiento",
-          "en": "Jesus commanded to commemorate his death, not his birth"
-        },
-        "cita": "Lucas 22:19",
-        "texto": {
-          "es": "Sigan haciendo esto en memoria de mí.",
-          "en": "Keep doing this in memory of me."
-        }
-      },
-      {
-        "titulo": {
-          "es": "La celebración de cumpleaños en la Biblia está ligada a sucesos trágicos",
-          "en": "Birthday celebrations in the Bible are linked to tragic events"
-        },
-        "cita": "Marcos 6:21-29",
-        "texto": {
-          "es": "En el cumpleaños de Herodes, mandó decapitar a Juan el Bautista.",
-          "en": "On Herod's birthday, he ordered the beheading of John the Baptist."
-        }
-      }
-    ],
-    "argumentos_logicos": [
-      {
-        "titulo": {
-          "es": "Celebrar algo que Jesús no pidió puede desviar la atención de su mensaje",
-          "en": "Celebrating something Jesus did not command can divert attention from his message"
-        },
-        "explicacion": {
-          "es": "En lugar de honrar a Jesús con acciones, muchos lo hacen con tradiciones sin fundamento bíblico.",
-          "en": "Instead of honoring Jesus with actions, many do so with traditions lacking biblical foundation."
-        }
-      },
-      {
-        "titulo": {
-          "es": "Los adornos y costumbres navideñas provienen de rituales paganos",
-          "en": "Christmas decorations and customs come from pagan rituals"
-        },
-        "explicacion": {
-          "es": "Árboles decorados, luces y regalos tienen orígenes en prácticas paganas, no en la adoración verdadera.",
-          "en": "Decorated trees, lights, and gifts have origins in pagan practices, not in true worship."
-        }
-      }
-    ],
-    "argumentos_historicos": [
-      {
-        "titulo": {
-          "es": "La Navidad fue adoptada siglos después de Cristo",
-          "en": "Christmas was adopted centuries after Christ"
-        },
-        "descripcion": {
-          "es": "No fue hasta el siglo IV que se comenzó a celebrar el 25 de diciembre como el nacimiento de Cristo.",
-          "en": "It wasn't until the 4th century that December 25 began to be celebrated as Christ's birth."
-        }
-      },
-      {
-        "titulo": {
-          "es": "Enciclopedia Católica y otras fuentes lo confirman",
-          "en": "The Catholic Encyclopedia and other sources confirm it"
-        },
-        "descripcion": {
-          "es": "Incluso fuentes religiosas reconocen que la fecha y las costumbres de la Navidad tienen orígenes no cristianos.",
-          "en": "Even religious sources acknowledge that the date and customs of Christmas have non-Christian origins."
-        }
-      }
-    ],
-    "fuentes_recomendadas": [
-      "https://www.jw.org/es/biblioteca/revistas/wp20091201/navidad-origen-biblico/",
-      "https://wol.jw.org/es/wol/d/r4/lp-s/2003768",
-      "https://www.jw.org/es/biblioteca/libros/Ense%C3%B1a/jesus-nacimiento/"
-    ]
-  },
-  "secciones": [
-    {
-      "subtitulo": {
-        "es": "La Biblia no menciona la fecha del nacimiento de Jesús",
-        "en": "The Bible does not mention the date of Jesus' birth"
-      },
-      "parrafos": [
-        {
-          "es": "Este detalle indica que el nacimiento de Jesús no ocurrió en diciembre, ya que los pastores no estarían al aire libre en pleno invierno en Judea.",
-          "en": "This detail indicates that Jesus' birth did not occur in December, as shepherds would not be outdoors during winter in Judea."
-        },
-        {
-          "es": "Lucas 2:8: Había pastores que vivían al aire libre y vigilaban sus rebaños durante la noche.",
-          "en": "Luke 2:8: There were shepherds living outdoors and keeping watch over their flocks at night."
-        }
-      ]
-    },
-    {
-      "subtitulo": {
-        "es": "Los primeros cristianos no celebraban cumpleaños",
-        "en": "The early Christians did not celebrate birthdays"
-      },
-      "parrafos": [
-        {
-          "es": "La Biblia registra celebraciones de cumpleaños solo en contextos paganos o negativos, como el del faraón o Herodes. Jesús nunca mandó que se celebrara su nacimiento.",
-          "en": "The Bible records birthday celebrations only in pagan or negative contexts, such as Pharaoh’s or Herod’s. Jesus never commanded the celebration of his birth."
-        },
-        {
-          "es": "Eclesiastés 7:1: Mejor es el día de la muerte que el día del nacimiento.",
-          "en": "Ecclesiastes 7:1: The day of death is better than the day of birth."
-        }
-      ]
-    },
-    {
-      "subtitulo": {
-        "es": "La Navidad tiene raíces paganas",
-        "en": "Christmas has pagan roots"
-      },
-      "parrafos": []
-    }
-  ]
+  "versiculos": [
+    "Lucas 22:19",
+    "Lucas 2:8",
+    "Marcos 6:21-29",
+    "Eclesiastés 7:1"
+  ],
+  "enlaces": [
+    "https://www.jw.org/es/biblioteca/revistas/wp20091201/navidad-origen-biblico/",
+    "https://wol.jw.org/es/wol/d/r4/lp-s/2003768",
+    "https://www.jw.org/es/biblioteca/libros/Ense%C3%B1a/jesus-nacimiento/"
+  ],
+  "copyright": {
+    "es": "© 2025 Watch Tower Bible and Tract Society of Pennsylvania. Usado con fines educativos sin ánimo de lucro.",
+    "en": "© 2025 Watch Tower Bible and Tract Society of Pennsylvania. Used for educational, non-commercial purposes."
+  }
 }
